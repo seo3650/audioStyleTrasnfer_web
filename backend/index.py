@@ -17,17 +17,16 @@ def render_file():
 def upload_file():
     if request.method == 'POST':
         f = request.files['file']
-        f.save('/home/ubuntu/audio_style_transfer/backend/reqFiles/' + secure_filename(f.filename))
-        
-        # TODO: Change to convert
-        shutil.move('/home/ubuntu/audio_style_transfer/backend/reqFiles/' + secure_filename(file_name),
-                '/home/ubuntu/audio_style_transfer/backend/convertedFiles/' + secure_filename(file_name))
-        return "success"
+        f.save('./reqFiles/' + secure_filename(f.filename))
+        if (split_mr(f.filename) == 0):
+            return "Success"
+        else:
+            return "Failure"
 
 @app.route("/fileDownload", methods = ['GET'])
 def download_file():
     file_name = request.args.get('fileName')
-    return send_file('/home/ubuntu/audio_style_transfer/backend/convertedFiles/' + secure_filename(file_name),
+    return send_file('./convertedFiles/' + secure_filename(file_name),
                      attachment_filename=file_name,
                      as_attachment=True)
 
@@ -48,7 +47,7 @@ file loaded in output like
 - vocal.wav
 """
 def split_mr(music_file):
-    subprocess.call(["spleeter", 'separate', '-i', music_file, '-o', 'output'])
+    subprocess.call(["spleeter", 'separate', '-i', './reqFiles/' + music_file, '-o', './splittedFiles'])
 
 """
 Requirement: pydub
