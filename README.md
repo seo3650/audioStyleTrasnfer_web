@@ -26,6 +26,9 @@ https://github.com/seo3650/Audio_style_transfer/
 
 # Front-end
 ## Dependencies
+  * antd
+  * styled-components
+  * react-router-dom
 
 
 # Server Info
