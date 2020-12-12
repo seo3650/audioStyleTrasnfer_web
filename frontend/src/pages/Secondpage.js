@@ -1,8 +1,9 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom'
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import 'antd/dist/antd.css';
 import { Button } from 'antd';
+import axios from 'axios';
 
 
 const BigContainer = styled.div`
@@ -27,12 +28,6 @@ const Column = styled.div`
     padding :3px;
 `;
 
-const Column2 = styled.div`
-    width : 50%;
-    float : left;
-    padding :3px;
-    text-align: right;
-`;
 
 const Main = styled.div`
   width : 100%;
@@ -75,19 +70,6 @@ const Title2 = styled.div`
     
 `;
 
-const Input = styled.input.attrs({
-    required: true
-})
-    `
-    background-color : #E9E9E9;
-    width : 40%;
-    text-align: left;
-    font-size : 15px;
-    padding : 10px;
-    margin : 2px;
-    border : none;
-    border-radius : 10px;
-`;
 
 const Input2 = styled.input.attrs({
     required: true
@@ -109,8 +91,8 @@ class Secondpage extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            selectedFile_1 : null,
-            selectedFile_2 : null
+            song : null,
+            singer : null
         }
         this.fileHandler_1 = this.fileHandler_1.bind(this);
         this.fileHandler_2 = this.fileHandler_2.bind(this);
@@ -119,20 +101,25 @@ class Secondpage extends React.Component{
 
     fileHandler_1 = (e) =>{
         const files = e.target.files;
-        this.setState({selectedFile_1 : files})
+        this.setState({song : files})
     };
 
     fileHandler_2 = (e) =>{
         const files = e.target.files;
-        this.setState({selectedFile_2 : files})
+        this.setState({singer : files})
     };
 
     onClickHandler = (e) => {
         const formData = new FormData();
-        formData.append(
-            this.state.selectedFile_1,
-            this.state.selectedFile_2
-        )
+        console.log(this.state.song);
+        formData.append( "song", this.state.song);
+        formData.append("singer", this.state.singer);
+        const config= {
+            headers : {
+                "Content-Type" : "multipart/form-data"
+            }
+        };
+        axios.post("http://34.64.145.248:5000/fileUpload", formData, config);
     }
     render() {
         return(
@@ -145,15 +132,16 @@ class Secondpage extends React.Component{
                         <Title1>Convert a Singer!</Title1>
                         <Title2>Converted song will be sent by e-mail in an hour</Title2>
                         <Title2>
-                            Song : <Input2 type="file" placeholder="Song" onChange={this.fileHandler_1}/>
-                            Singer : <Input2 type="file" placeholder="Singer"onChange={this.fileHandler_1}/>
-                            <Button type="primary" onClick={this.onClickHandler} style={{fontSize : "20px", padding: "10px", height: "55px", width: "120px", borderRadius:"10px",margin:"10px"}}>Convert</Button>
+                                <form action = "http://34.64.145.248:5000/fileUpload" method = "POST"
+                                    enctype = "multipart/form-data">
+                            Song:
+                                    <Input2 type = "file" name = "song"/>
+                            Singer:
+                                    <Input2 type = "file" name = "singer"/><br></br><br></br>
+                                    <Button type = "primary" htmlType="submit" style={{fontSize:'20px', height: '60px', width : "150px", padding : "5px"}}>Convert</Button>
+                                </form>
+    
                         </Title2>
-                        <Title2 style={{marginTop : "50px"}}>
-                            <Input2 type="email" placeholder="set your email"/>
-                            <Button type="primary">Click</Button>
-                        </Title2>
-                        
                     </Container>
                 </Main>
             </BigContainer>

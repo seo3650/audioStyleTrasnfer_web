@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {withRouter} from 'react-router-dom'
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import {Button} from 'antd';
 import 'antd/dist/antd.css';
 import "../App.css"
@@ -29,12 +29,6 @@ const Column = styled.div`
     padding :3px;
 `;
 
-const Column2 = styled.div`
-    width : 50%;
-    float : left;
-    text-align: right;
-    padding :3px;
-`;
 
 const Main = styled.div`
   width : 100%;
@@ -79,20 +73,6 @@ const Title2 = styled.div`
     
 `;
 
-
-const Input = styled.input.attrs({
-    required: true
-})
-    `
-    background-color : #E9E9E9;
-    width : 40%;
-    text-align: left;
-    font-size : 15px;
-    padding : 10px;
-    margin : 2px;
-    border : none;
-    border-radius : 10px;
-`;
 
 
 

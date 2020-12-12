@@ -6,6 +6,7 @@ import os
 from os.path import join, basename
 from data_loader import to_categorical
 import librosa
+import soundfile as sf
 from utils import *
 import glob
 
@@ -78,7 +79,9 @@ def test(config):
     # Restore model
     print(f'Loading the trained models from step {config.resume_iters}...')
     G_path = join(config.model_save_dir, f'{config.resume_iters}-G.ckpt')
-    G.load_state_dict(torch.load(G_path, map_location=lambda storage, loc: storage))
+    print(G_path)
+    # G.load_state_dict(torch.load(G_path, map_location=lambda storage, loc: storage))
+    G.load_state_dict(torch.load(G_path, map_location=device))
 
     # Read a batch of testdata
     test_wavfiles = test_loader.get_batch_test_data(batch_size=config.num_converted_wavs)
@@ -106,12 +109,12 @@ def test(config):
             wav_transformed = world_speech_synthesis(f0=f0_converted, coded_sp=coded_sp_converted, 
                                                     ap=ap, fs=sampling_rate, frame_period=frame_period)
             wav_id = wav_name.split('.')[0]
-            librosa.output.write_wav(join(config.convert_dir, str(config.resume_iters),
+            sf.write(join(config.convert_dir, str(config.resume_iters),
                 f'{wav_id}-vcto-{test_loader.trg_spk}.wav'), wav_transformed, sampling_rate)
             if [True, False][0]:
                 wav_cpsyn = world_speech_synthesis(f0=f0, coded_sp=coded_sp, 
                                                 ap=ap, fs=sampling_rate, frame_period=frame_period)
-                librosa.output.write_wav(join(config.convert_dir, str(config.resume_iters), f'cpsyn-{wav_name}'), wav_cpsyn, sampling_rate)
+                sf.write(join(config.convert_dir, str(config.resume_iters), f'cpsyn-{wav_name}'), wav_cpsyn, sampling_rate)
 
 
 if __name__ == '__main__':
