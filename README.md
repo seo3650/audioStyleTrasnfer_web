@@ -25,6 +25,18 @@ After select the file and click the convert, wait ~5 minutes for conversion. If 
 We use StarGAN pretrained model. Please refer to:
 https://github.com/seo3650/Audio_style_transfer/
 
+
+index.py is the main file. When user request the convert, the index.py file receive the request. The conversion pipeline is below.
+
+
+* Upload the user's mp3 files into server
+* Extract vocal & MR wav files from each of the 2 mp3 files
+* Convert the voice of source wav file
+* Merge the converted file with MR
+
+
+
+
 # Front-end
 ## Dependencies
   * antd
