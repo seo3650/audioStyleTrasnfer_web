@@ -39,6 +39,8 @@ index.py is the main file. When user request the convert, the index.py file rece
 * Merge the converted file with MR
 
 # Front-end
+This is main page of our website.
+<img width="1434" alt="스크린샷 2020-12-12 오후 9 45 15" src="https://user-images.githubusercontent.com/63027385/101984464-f7962180-3cc4-11eb-883a-a45bc351698b.png">
 ## Dependencies
   * antd
   * styled-components
