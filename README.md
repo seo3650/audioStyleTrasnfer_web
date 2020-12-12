@@ -1,7 +1,7 @@
 This is a project for KAIST CS470: Introduction to A.I.
 
 
-# StarGAN-Voice-Conversion Web service
+# StarGAN-Voice-Conversion: Web service
 We implement the singer-conversion. In the web page, users can convert the song with the singer they want. Please refer to https://github.com/seo3650/Audio_style_transfer/.
 
 
