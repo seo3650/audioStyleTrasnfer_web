@@ -41,10 +41,13 @@ index.py is the main file. When user request the convert, the index.py file rece
 # Front-end
 This is main page of our website.
 <img width="1434" alt="스크린샷 2020-12-12 오후 9 45 15" src="https://user-images.githubusercontent.com/63027385/101984464-f7962180-3cc4-11eb-883a-a45bc351698b.png">
+
 Choose mp3 file of song and singer.
 File name should not contain spaces and file name should be in English.
+<img width="1438" alt="스크린샷 2020-12-12 오후 10 16 04" src="https://user-images.githubusercontent.com/63027385/101984971-0df1ac80-3cc8-11eb-8979-fddd6b153f78.png">
 
 Our website will convert a singer of song ,and automatically downloaded . It will takes 5 minutes.
+<img width="1419" alt="스크린샷 2020-12-12 오후 10 19 30" src="https://user-images.githubusercontent.com/63027385/101984982-2792f400-3cc8-11eb-9b20-6ecdc7aeafc4.png">
 
 (Too many people can be unstable)
 
