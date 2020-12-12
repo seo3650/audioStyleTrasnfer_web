@@ -18,7 +18,7 @@ After selecting the file and click the convert, wait ~5 minutes for conversion. 
 # Back-end
 ## Dependencies
 * Python 3.6
-* Pytorch 0.4.0
+* Pytorch 1.7.0
 * pyworld
 * tqdm
 * librosa
