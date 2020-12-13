@@ -10,9 +10,12 @@ http://34.64.145.248:3000/
 
 
 # How to use
-On the page, you need 2 songs: the song you want to convert, and the song which the singer you want to sing. The songs should be .mp3 file.
+On the page, you need 2 songs: the song you want to convert, and the song which the singer you want to sing. The songs should be mp3 (less than 5MB) or wav(less than 25MB) file. Also, the song's name should be in English with no space. (ex: abc.mp3 (O), ab_c.mp3 (O), ab c.mp3 (X)) 
+
 
 After selecting the file and click the convert, wait ~5 minutes for conversion. If the conversion end, a converted song will be downloaded automatically.
+
+
 
 
 # Back-end
